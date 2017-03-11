@@ -1,0 +1,51 @@
+/* ##### LISTE #####*/
+.img-site {
+	width: 150px;
+	height: 100px;
+	text-align: left;
+	display: inline-block;
+}
+
+.text-site {
+	width: calc(100% - 170px);
+	height: 90px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px;
+	padding-top: 3px;
+}
+
+.description-site {
+	overflow: hidden;
+    height: 52px;
+}
+
+.juke-site {
+	position: absolute;
+    bottom: 11px;
+	right: 33px;
+}
+
+.acceder-site {
+	background: #bbbbbb;
+    width: calc(100% - 32px);
+    height: 100px;
+    position: absolute;
+    top: 36px;
+	display: none;
+}
+
+.acceder-site:hover {
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
