@@ -14,7 +14,7 @@
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse">
 				<div class="panel-body">
-					<input type="text" class="form-control" id="quick-event-name" placeholder="new event title" style="margin-bottom:5px;">
+					<input type="text" class="form-control" id="quick-event-name" placeholder="Nom du site" style="margin-bottom:5px;">
 					<input type="text" class="form-control" id="quick-event-name" placeholder="new event title" style="margin-bottom:5px;">
 					<div class="col-sm-6" style="padding:0 2px 0 0;">
 						<input type="text" class="form-control" id="quick-event-name" placeholder="new event title" style="margin-bottom:5px;">
