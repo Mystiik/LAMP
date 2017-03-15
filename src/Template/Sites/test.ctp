@@ -35,3 +35,9 @@
 		</div>
 	</div>
 </div>
+
+<?php
+	echo $this -> html -> link ($a, $b);
+
+	echo $this -> form -> create(); 
+	echo 

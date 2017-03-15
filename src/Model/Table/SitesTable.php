@@ -33,6 +33,14 @@ class SitesTable extends Table{
 		
 		return $result;
 	}
+	
+	public function new_site($name, $type, $locx, $locy, $stock)
+	{
+		$bdd = ConnectionManager::get('default');
+		$result = $bdd->execute('INSERT INTO sites (name, type, location_x, location_y, stock)
+								VALUES ("'.$name.'", "'.$type.'", "'.$locx.'", "'.$locy.'", "'.$stock.'")');
+		
+	}
 }
 
 
