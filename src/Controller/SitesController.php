@@ -9,6 +9,11 @@ class SitesController extends AppController
 
     }
 	
+	public function test()
+    {
+
+    }
+	
 	public function liste()
     {
 		//Récupération de tous les sites
