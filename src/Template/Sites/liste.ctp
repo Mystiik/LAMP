@@ -54,11 +54,11 @@
 																						'id'=>'stock',
 																						'label'=>False,
 																						'placeholder'=>'Stock',
-																						'style'=>'margin-bottom:5px;')) ?>
+																						'style'=>'margin-bottom:15px;')) ?>
 										
 										<div class="center" style="padding:0 4px 0 0;">
 											<?= $this->Form->button('Valider', array('type' => 'submit',
-																					'class'=>'btn btn-secondary btn-block',
+																					'class'=>'btn btn-custom-primary btn-block',
 																					'id'=>'btn-quick-event',
 																					'label'=>False)) ?>
 										</div>

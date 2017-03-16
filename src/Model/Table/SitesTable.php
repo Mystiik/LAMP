@@ -26,12 +26,22 @@ class SitesTable extends Table{
 		return $result;
 	}
 	
-	public function recup_sites_producteurs()
+	public function recup_sites_order()
 	{
 		$bdd = ConnectionManager::get('default');
-		$result = $bdd->execute('SELECT * FROM sites WHERE type="producteur"')->fetchAll();
+		$result = $bdd->execute('SELECT * FROM sites ORDER BY name')->fetchAll();
 		
 		return $result;
+	}
+	
+	public function recup_lien($idsite)
+	{
+		$bdd = ConnectionManager::get('default');
+		
+		$req = $bdd->prepare('SELECT * FROM paths WHERE starting_site_id=:start OR ending_site_id=:end');
+		$req->execute(array('start' => $idsite, 'end' => $idsite));
+		
+		return $req->fetchAll();
 	}
 	
 	public function new_site($name, $type, $locx, $locy, $stock)
@@ -39,7 +49,6 @@ class SitesTable extends Table{
 		$bdd = ConnectionManager::get('default');
 		$result = $bdd->execute('INSERT INTO sites (name, type, location_x, location_y, stock)
 								VALUES ("'.$name.'", "'.$type.'", "'.$locx.'", "'.$locy.'", "'.$stock.'")');
-		
 	}
 }
 

@@ -3,7 +3,7 @@
 	function loadScript() {
 		var script = document.createElement('script');
 		script.type = 'text/javascript';
-		script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBbJ16uUP1tqA_-qsojvMCBV12V71rukHA&sensor=true&' +
+		script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBbJ16uUP1tqA_-qsojvMCBV12V71rukHA&' +
 			'callback=initialize';
 		document.body.appendChild(script);
 	}

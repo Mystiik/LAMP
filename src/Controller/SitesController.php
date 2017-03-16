@@ -57,26 +57,32 @@ class SitesController extends AppController
 		//Récupération de tous les sites
 		$this->loadModel('Sites');
 		$table = $this->Sites->recup_sites();
+		$tableorder = $this->Sites->recup_sites_order();
 		
 		$this->set('table', $table);
-		
-		//Récupération de tous les sites producteurs
-		$producteur = $this->Sites->recup_sites_producteurs();
-		
-		$this->set('producteur', $producteur);
+		$this->set('tableorder', $tableorder);
 		
 		//Formulaire
 		if($this->request->is('post'))
 		{
 			if(isset($this->request->data))
 			{
-				$this->set('TheChosenOne', $this->request->data['TheChosenOne']);
+				$TheChosenOne = $this->request->data['TheChosenOne'];
+				$this->set('TheChosenOne', $TheChosenOne);
 			}
 		}
 		else
 		{
-			$this->set('TheChosenOne', 0);
+			$TheChosenOne = 1;
+			$this->set('TheChosenOne', $TheChosenOne);
 		}
+		
+		//Récupération de tous les liens du site actuel
+		$lien = $this->Sites->recup_lien($TheChosenOne);
+		
+		$this->set('lien', $lien);
+		
+		
 		//debug($TheChosenOne);
     }
 }

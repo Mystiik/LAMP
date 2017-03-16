@@ -13,10 +13,10 @@
 				<div class="col-sm-12">
 					<select name="select2" id="select1" class="select2 FORM" style="margin-bottom:35px">
 					<?php
-						for($i=0;$i<count($table);$i++)
+						for($i=0;$i<count($tableorder);$i++)
 						{
-							if($TheChosenOne==$i) {$selec="selected";} else {$selec="";}
-							echo "<option value='$i' $selec>".$table[$i][1]." - ".$table[$i][2]." :: ".$table[$i][3].",".$table[$i][4]."</option>";
+							if($TheChosenOne==$tableorder[$i][0]) {$selec="selected";} else {$selec="";}
+							echo "<option value='".$tableorder[$i][0]."' $selec>".$tableorder[$i][1]." - ".$tableorder[$i][2]." :: ".$tableorder[$i][3].",".$tableorder[$i][4]."</option>";
 						}
 					?>
 					</select>
@@ -34,7 +34,7 @@
 						$('.FORM').on('change', function (e) {
 							hiddenform = document.getElementById('hiddenform');
 							hiddeninput = document.getElementById('hiddeninput');
-							index = document.getElementById('select1').selectedIndex;
+							index = document.getElementById('select1').value;
 							
 							hiddeninput.value = index;
 							
@@ -45,7 +45,7 @@
 					<!--VOIE ASSOCIEE-->
 					<div class="widget widget-table">
 						<div class="widget-header">
-							<h3><i class="fa fa-table"></i> Voie associée</h3> <em> - <?php echo $table[$TheChosenOne][1]; ?></em></div>
+							<h3><i class="fa fa-table"></i> Voie associée</h3> <em> - <?php echo $table[$TheChosenOne-1][1]; ?></em></div>
 						<div class="widget-content" style="padding-top:10px;">
 							<table id="featured-datatable" class="table table-sorting table-striped table-hover datatable">
 								<thead>
@@ -55,8 +55,8 @@
 								</thead>
 								<tbody>
 								<?php
-									for($i=0;$i<count($table);$i++)
-									{ echo"<tr><td>".$table[$i][1]."</td><td>".$table[$i][2]."</td><td>".$table[$i][3]."</td><td>".$table[$i][4]."</td></tr>"; }
+									for($i=0;$i<count($lien);$i++)
+									{ echo"<tr><td>".$lien[$i][1]."</td><td>".$table[$lien[$i][2]-1][1]."</td><td>".$table[$lien[$i][3]-1][1]."</td><td>".$lien[$i][4]."</td></tr>"; }
 								?>
 								</tbody>
 							</table>
@@ -130,7 +130,7 @@
 <script type="text/javascript">
 	function codeAddress() {
 	
-		var address = "<?php echo $table[$TheChosenOne][3].",".$table[$TheChosenOne][4]; ?>";
+		var address = "<?php echo $table[$TheChosenOne-1][3].",".$table[$TheChosenOne-1][4]; ?>";
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				map.setCenter(results[0].geometry.location);
@@ -143,7 +143,7 @@
 					
 				});
 				
-				var contentString = '<div class="info-window"><h4 style="margin:0px"><?php echo $producteur[$TheChosenOne][1]." - ".$producteur[$TheChosenOne][2]." :: ".$producteur[$TheChosenOne][3].", ".$producteur[$TheChosenOne][4]; ?></h4></div>';
+				var contentString = '<div class="info-window"><h4 style="margin:0px"><?php echo $table[$TheChosenOne-1][1]." - ".$table[$TheChosenOne-1][2]." :: ".$table[$TheChosenOne-1][3].", ".$table[$TheChosenOne-1][4]; ?></h4></div>';
 
 				var infowindow = new google.maps.InfoWindow({
 					content: contentString,
