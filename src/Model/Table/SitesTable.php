@@ -44,6 +44,28 @@ class SitesTable extends Table{
 		return $req->fetchAll();
 	}
 	
+	public function recup_record($idsite)
+	{
+		$bdd = ConnectionManager::get('default');
+		
+		$req = $bdd->prepare('SELECT * FROM records WHERE site_id=:site_id ORDER BY date');
+		$req->execute(array('site_id' => $idsite));
+		
+		return $req->fetchAll();
+	}
+	
+	public function recup_record_type($idsite, $type)
+	{
+		$bdd = ConnectionManager::get('default');
+		
+		if($type=="consommateur") { $req = $bdd->prepare('SELECT * FROM records WHERE site_id=:site_id AND value<0'); }
+		if($type=="producteur") { $req = $bdd->prepare('SELECT * FROM records WHERE site_id=:site_id AND value>0'); }
+		
+		$req->execute(array('site_id' => $idsite));
+		
+		return $req->fetchAll();
+	}
+	
 	public function new_site($name, $type, $locx, $locy, $stock)
 	{
 		$bdd = ConnectionManager::get('default');

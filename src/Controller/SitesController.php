@@ -77,13 +77,43 @@ class SitesController extends AppController
 			$this->set('TheChosenOne', $TheChosenOne);
 		}
 		
-		//Récupération de tous les liens du site actuel
+		//Récupération du lien
 		$lien = $this->Sites->recup_lien($TheChosenOne);
 		
 		$this->set('lien', $lien);
 		
 		
-		//debug($TheChosenOne);
+		//Récupération des statistiques
+		$record = $this->Sites->recup_record($TheChosenOne);
+		$this->set('record', $record);
+		$record_type = $this->Sites->recup_record_type($TheChosenOne, $table[$TheChosenOne][2]);
+		
+		$total = 0;
+		$max = 0;
+		$min = 10000;
+		
+		for($i=0;$i<count($record_type);$i++)
+		{
+			$tmp = abs($record_type[$i][3]);
+			$total += $tmp;
+			if($tmp>$max) { $max=$tmp; }
+			if($tmp<$min) { $min=$tmp; }
+		}
+		
+		$nbreleve = count($record_type);
+		$moyenne = round($total/$nbreleve, 2);
+		
+		$total_appro = 0;
+		for($i=0;$i<count($lien);$i++) { $total_appro += $lien[$i][4]; }
+		
+		if($table[$TheChosenOne][2]=="consommateur") { $etat = "Consommation"; }
+		if($table[$TheChosenOne][2]=="producteur") { $etat = "Production"; }
+		
+		
+		$stat = ['tot'=>$total, 'max'=>$max, 'min'=>$min, 'moy'=>$moyenne, 'nbr'=>$nbreleve, 'totapp'=>$total_appro, 'etat'=>$etat];
+		$this->set('stat', $stat);
+		
+		//debug($stat);
     }
 }
 ?>

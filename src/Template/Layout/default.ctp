@@ -49,8 +49,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?= $this->Html->script('plugins/select2/select2.min.js') ?>
 		<?= $this->Html->script('king-table.js') ?>
 		<?= $this->Html->script('plugins/google-map/google-map.js') ?>
+		<?= $this->Html->script('plugins/stat/flot/jquery.flot.resize.min.js') ?>
+		<?= $this->Html->script('plugins/stat/flot/jquery.flot.tooltip.min.js') ?>
+		<?= $this->Html->script('plugins/stat/flot/jquery.flot.selection.min.js') ?>
+		<?= $this->Html->script('plugins/stat/flot/jquery.flot.time.min.js') ?>
 		
-		<?= $this->Html->script('plugins/stat/jquery.easypiechart.min.js') ?>
+		
 	</head>
 	
 	<body class="sidebar-fixed topnav-fixed dashboard4">
