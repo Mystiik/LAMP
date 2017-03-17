@@ -4,10 +4,6 @@
 </div>
 <div class="main-content">
 	<div class="widget">
-		<div class="widget-header" >
-			<h3><i class="fa fa-bar-chart-o"></i> Statistique de sites</h3> <em> - Graphique linéaire avec plusieurs données (année en cours)</em>
-		</div>
-		
 		<div class="widget-content"  style="padding: 10px;">
 			<div class="row">
 				<div class="col-sm-12">
