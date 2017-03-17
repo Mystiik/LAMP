@@ -67,7 +67,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					<?= $this->fetch('content') ?>
 				</div>
 				
+				</br></br>
 				<footer class="footer">
+					<p>Gr2 02 AF | Options implémentées: A,C,D,E,F</p>
+					<p>Guillaume NICOLAS, Vincent RAVAINE, Guillaume LEMOINE, Selma GOURIMI</p>
 					<p>&copy; 2017 Web-energie</p>
 				</footer>
 			</div>
