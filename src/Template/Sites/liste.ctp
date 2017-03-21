@@ -83,14 +83,15 @@
 						</thead>
 						<tbody>
 						<?php
-							foreach($table as $line)
-							{ echo"<tr><td>".$line->name
-							."</td><td>".$line->type
-							."</td><td>".$line->location_x
-							."</td><td>".$line->location_y
-							."</td><td>".$line->stock
+							for($i=0;$i<count($table);$i++)
+							{ echo"<tr><td>".$table[$i][1]
+							."</td><td>".$table[$i][2]
+							."</td><td>".$table[$i][3]
+							."</td><td>".$table[$i][4]
+							."</td><td>".$table[$i][5]
 							."</td><td>".$this->Html->link($this->Html->image('suppr.png'), "/sites/delete/parametre",['escape' => false])
-							."</td><td>".$this->Html->link($this->Html->image('modif.jpg'), "/sites/modifier/parametre",['escape' => false]);}
+							."</td><td>".$this->Html->link($this->Html->image('modif.jpg'), "/sites/modifier/parametre",['escape' => false])
+							."</td></tr>"; }
 						?>
 						</tbody>
 					</table>
