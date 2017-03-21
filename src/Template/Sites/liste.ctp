@@ -27,13 +27,12 @@
 																					'label'=>False,
 																					'placeholder'=>'Nom du site',
 																					'style'=>'margin-bottom:5px;')) ?>
-										<?= $this->Form->input('type',array('type'=>'text',
-																					'class'=>'form-control',
+										<?= $this->Form->input('', array(
+																					'class'=>'select2',
 																					'id'=>'type',
-																					'label'=>False,
-																					'placeholder'=>'Type du site (producteur/consommateur)',
-																					'style'=>'margin-bottom:5px;')) ?>
-										<div class="col-sm-6" style="padding:0 4px 0 0;">
+																					'type'=>'select', 
+																					'options' => ['consommateur'=>'Consommateur','producteur'=>'Poducteur'],) ); ?>
+										<div class="col-sm-6" style="padding:6px 4px 0 0;">
 											<?= $this->Form->input('locx',array('type'=>'text',
 																						'class'=>'form-control',
 																						'id'=>'locx',
@@ -41,7 +40,7 @@
 																						'placeholder'=>'Localisation x',
 																						'style'=>'margin-bottom:5px;')) ?>
 										</div>
-										<div class="col-sm-6" style="padding:0 0 0 4px;">
+										<div class="col-sm-6" style="padding:6px 0 0 4px;">
 											<?= $this->Form->input('locy',array('type'=>'text',
 																							'class'=>'form-control',
 																							'id'=>'locy',
