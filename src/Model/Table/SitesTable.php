@@ -22,8 +22,9 @@ class SitesTable extends Table{
 	{
 		$bdd = ConnectionManager::get('default');
 		$result = $bdd->execute('SELECT * FROM sites')->fetchAll();
-		
 		return $result;
+		//return $this->find()->toArray();  // code de M. Falconnet, pour appliquer son code, décommente cette ligne et commente les 3 du dessus
+		
 	}
 	
 	public function recup_sites_order()

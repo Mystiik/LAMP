@@ -79,13 +79,19 @@
 					<table id="featured-datatable" class="table table-sorting table-striped table-hover datatable">
 						<thead>
 							<tr>
-								<th>Nom</th><th>Type</th><th>Localisation X</th><th>Localisation Y</th><th>Stock</th>
+								<th>Nom</th><th>Type</th><th>Localisation X</th><th>Localisation Y</th><th>Stock</th><th></th><th></th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php
-							for($i=0;$i<count($table);$i++)
-							{ echo"<tr><td>".$table[$i][1]."</td><td>".$table[$i][2]."</td><td>".$table[$i][3]."</td><td>".$table[$i][4]."</td><td>".$table[$i][5]."</td></tr>"; }
+							foreach($table as $line)
+							{ echo"<tr><td>".$line->name
+							."</td><td>".$line->type
+							."</td><td>".$line->location_x
+							."</td><td>".$line->location_y
+							."</td><td>".$line->stock
+							."</td><td>".$this->Html->link($this->Html->image('suppr.png'), "/sites/delete/parametre",['escape' => false])
+							."</td><td>".$this->Html->link($this->Html->image('modif.jpg'), "/sites/modifier/parametre",['escape' => false]);}
 						?>
 						</tbody>
 					</table>
