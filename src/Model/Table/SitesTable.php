@@ -74,13 +74,52 @@ class SitesTable extends Table{
 								VALUES ("'.$name.'", "'.$type.'", "'.$locx.'", "'.$locy.'", "'.$stock.'")');
 	}
 	
-	public function remove_site($idsite)
+	public function suppr_site($id)
 	{
 		$bdd = ConnectionManager::get('default');
-		$req = $bdd->prepare('DELETE FROM sites WHERE id =:site_id');
-		$req->execute(array('site_id' => $idsite));
+		$req = $bdd->prepare('DELETE FROM sites WHERE id=:id');
+		$req->execute(array('id' => $id));
 	}
 	
+	public function suppr_record($id)
+	{
+		$bdd = ConnectionManager::get('default');
+		$req = $bdd->prepare('DELETE FROM records WHERE id=:id');
+		$req->execute(array('id' => $id));
+	}
+	
+	public function modif_site($id, $name, $type, $locx, $locy, $stock)
+	{
+		$bdd = ConnectionManager::get('default');
+		$req = $bdd->prepare('UPDATE sites
+								SET name=:name, type=:type, location_x=:locx, location_y=:locy, stock=:stock
+								WHERE id=:id');
+		$req->execute(array('name' => $name,
+							'type' => $type,
+							'locx' => $locx,
+							'locy' => $locy,
+							'stock' => $stock,
+							'id' => $id));
+	}
+	
+	public function new_record($site_id, $date, $value)
+	{
+		$bdd = ConnectionManager::get('default');
+		$req=$bdd->prepare('INSERT INTO records (site_id, date, value) VALUES (:site_id, :date, :value)');
+		$req->execute(array('site_id' => $site_id,
+							'date' => $date,
+							'value' => $value));
+	}
+	
+	public function new_lien($name, $producteur, $consommateur)
+	{
+		$bdd = ConnectionManager::get('default');
+		$req=$bdd->prepare('INSERT INTO paths (name, starting_site_id, ending_site_id, max_capacity) VALUES (:name, :start, :end, :max)');
+		$req->execute(array('name' => $name,
+							'start' => $producteur,
+							'end' => $consommateur,
+							'max' => rand(2, 10)));
+	}
 }
 
 

@@ -65,6 +65,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<div id="main-content-wrapper" class="content-wrapper">
 				<div class="content">
 					<?= $this->fetch('content') ?>
+					<?php include("success.php"); ?>
 				</div>
 				
 				</br></br>
