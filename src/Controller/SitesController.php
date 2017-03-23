@@ -6,12 +6,20 @@ class SitesController extends AppController
 {
 	public function index()
     {
-
+		
     }
 	
 	public function test()
     {
-
+		
+    }
+	
+	public function suppr()
+    {
+		$here = $this->request->here();
+		$pieces = explode("/", $here);
+		$this->Sites->remove_site($pieces[4]);
+		$this->redirect('/sites/liste');
     }
 	
 	public function liste()

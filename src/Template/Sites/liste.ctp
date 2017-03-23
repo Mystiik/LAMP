@@ -89,9 +89,19 @@
 							."</td><td>".$table[$i][3]
 							."</td><td>".$table[$i][4]
 							."</td><td>".$table[$i][5]
-							."</td><td>".$this->Html->link($this->Html->image('suppr.png'), "/sites/delete/parametre",['escape' => false])
-							."</td><td>".$this->Html->link($this->Html->image('modif.jpg'), "/sites/modifier/parametre",['escape' => false])
+							."</td><td>".$this->Html->link($this->Html->image('suppr.png'), "/sites/suppr/".$table[$i][0],['escape' => false])
+							."</td><td>".$this->Html->link($this->Html->image('modif.jpg'), "/sites/modifier/".$table[$i][0],['escape' => false])
 							."</td></tr>"; }
+							
+							
+							/*
+							echo '<li>'.$a['titre'].' le '.$a['created'].
+							'<span class="">'.$html->link($html->image('url'=>'/theme/img/editA.png'), 
+							array('action' => 'edit', $a['id'])).' '.$html->link('[supprimer]', 
+							array('action' => 'delete', $a['id']), null, 
+							'Etes vous sûr de vouloir supprimer le billet ?').'</span></li>';
+							*/
+							
 						?>
 						</tbody>
 					</table>

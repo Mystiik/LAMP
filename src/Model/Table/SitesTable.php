@@ -73,6 +73,14 @@ class SitesTable extends Table{
 		$result = $bdd->execute('INSERT INTO sites (name, type, location_x, location_y, stock)
 								VALUES ("'.$name.'", "'.$type.'", "'.$locx.'", "'.$locy.'", "'.$stock.'")');
 	}
+	
+	public function remove_site($idsite)
+	{
+		$bdd = ConnectionManager::get('default');
+		$req = $bdd->prepare('DELETE FROM sites WHERE id =:site_id');
+		$req->execute(array('site_id' => $idsite));
+	}
+	
 }
 
 
