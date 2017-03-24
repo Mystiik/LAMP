@@ -39,7 +39,11 @@ class SitesController extends AppController
 				if( gettype($stock)!="double" ) { $err+=1; }
 				
 				//Appel de la fonction
-				if($err==0) { $this->Sites->new_site($name, $type, $locx, $locy, $stock); }
+				if($err==0)
+				{
+					$this->Sites->new_site($name, $type, $locx, $locy, $stock);
+					$this->request->session()->write('success', 1);
+				}
 				
 				$this->redirect(array('controller' => 'sites', 'action' => 'liste'));
 				//debug($name);
@@ -118,7 +122,9 @@ class SitesController extends AppController
 		}
 		
 		$nbreleve = count($record_type);
-		$moyenne = round($total/$nbreleve, 2);
+		
+		if(count($record_type)!=0) { $moyenne = round($total/$nbreleve, 2); }
+		else { $moyenne = 0; $min = 0; }
 		
 		$total_appro = 0;
 		for($i=0;$i<count($lien);$i++) { $total_appro += $lien[$i][4]; }
@@ -201,7 +207,9 @@ class SitesController extends AppController
 		}
 		
 		$nbreleve = count($record_type);
-		$moyenne = round($total/$nbreleve, 2);
+		
+		if(count($record_type)!=0) { $moyenne = round($total/$nbreleve, 2); }
+		else { $moyenne = 0; $min = 0; }
 		
 		$total_appro = 0;
 		for($i=0;$i<count($lien);$i++) { $total_appro += $lien[$i][4]; }
@@ -233,6 +241,10 @@ class SitesController extends AppController
 			$this->Sites->suppr_site(intval($here[4]));
 			
 			$this->request->session()->write('success', 1);
+			
+			$TheChosenOne = 1;
+			$session->write('TheChosenOne', $TheChosenOne);
+			$this->set('TheChosenOne', $TheChosenOne);
 		}
 		$this->redirect(array('controller' => 'sites', 'action' => 'liste'));
     }
